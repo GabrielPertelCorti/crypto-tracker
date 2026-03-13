@@ -33,7 +33,7 @@ export default function Home() {
 
 
     async function getData(){
-        fetch("https://rest.coincap.io/v3/assets?limit=10&offset=0")
+        fetch("https://rest.coincap.io/v3/assets?limit=5&offset=0")
         .then(response => response.json())
         .then((data: DataProp) => {
           const coinsData = data.data;
@@ -81,65 +81,39 @@ export default function Home() {
   
   return (
     <main className={styles.container}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Digite o nome da moeda... Ex: Bitcoin"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-        <button type="submit">
+      <form className={styles.form} onSubmit={handleSubmit} >
+        <input type="text" placeholder='Digite o nome da moeda... Ex: Bitcoin'
+        value={input} onChange={(e) => setInput(e.target.value)}/>
+        <button type="submit" >
           <BsSearch size={30} color="#fff" />
-        </button>
+          </button>
       </form>
 
       <table>
         <thead>
           <tr>
-            <th scope="col">Moeda</th>
-            <th scope="col">Valor de Mercado</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Volume</th>
-            <th scope="col">Variação 24h</th>
+            <th scope='col' >Moeda</th>
+            <th scope='col' >Valor de Mercado</th>
+            <th scope='col' >Preço</th>
+            <th scope='col' >Volume</th>
+            <th scope='col' >Variação 24h</th>
+            
           </tr>
         </thead>
 
-        <tbody id="tbody">
-          {coins.length > 0 &&
-            coins.map((item) => (
-              <tr className={styles.tr} key={item.id}>
-                <td className={styles.td} data-label="Moeda">
-                  <div className={styles.name}>
-                  <img src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`} alt="Logo do ativo" className={styles.logo} />
-                    <Link to={`/detail/${item.id}`}>
-                      <span>{item.name}</span> | {item.symbol}
-                    </Link>
-                  </div>
-                </td>
-
-                <td className={styles.td} data-label="Valor de Mercado">
-                  {item.formatedMarketCap}
-                </td>
-
-                <td className={styles.td} data-label="Preço">
-                  {item.formatedPrice}
-                </td>
-
-                <td className={styles.td} data-label="Volume">
-                  {item.formatedVolume}
-                </td>
-
-                <td className={Number(item.changePercent24Hr) > 0 ? styles.tdProfit : styles.tdLoss} data-label="Variação 24h">
-                  <span>{(Number(item.changePercent24Hr)).toFixed(2) + '%' }</span>
-                </td>
-              </tr>
-            ))}
+        <tbody id='tbody'>
+          {
+            coins.length > 0 && coins.map((item) => (
+              
+            ))
+          }
         </tbody>
       </table>
 
       <button className={styles.buttonShowMore} onClick={handleShowMore}>
         Carregar Mais
       </button>
+
     </main>
-  );
+  )
 }

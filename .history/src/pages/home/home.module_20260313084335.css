@@ -86,8 +86,8 @@ table td{
 }
 
 .logo{
-  width: 28px;
-  height: 28px;
+  width: 20px;
+  height: 20px;
   transition: all 1s;
 }
 
@@ -108,7 +108,7 @@ table td{
 @media screen and (max-width: 600px){
 
   .name img{
-    margin-left: 14px;
+    margin le
   }
 
   table{

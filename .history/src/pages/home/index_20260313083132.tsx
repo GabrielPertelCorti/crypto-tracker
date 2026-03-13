@@ -110,7 +110,6 @@ export default function Home() {
               <tr className={styles.tr} key={item.id}>
                 <td className={styles.td} data-label="Moeda">
                   <div className={styles.name}>
-                  <img src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`} alt="Logo do ativo" className={styles.logo} />
                     <Link to={`/detail/${item.id}`}>
                       <span>{item.name}</span> | {item.symbol}
                     </Link>
@@ -129,7 +128,7 @@ export default function Home() {
                   {item.formatedVolume}
                 </td>
 
-                <td className={Number(item.changePercent24Hr) > 0 ? styles.tdProfit : styles.tdLoss} data-label="Variação 24h">
+                <td className={} data-label="Variação 24h">
                   <span>{(Number(item.changePercent24Hr)).toFixed(2) + '%' }</span>
                 </td>
               </tr>

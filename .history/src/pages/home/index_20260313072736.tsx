@@ -33,7 +33,7 @@ export default function Home() {
 
 
     async function getData(){
-        fetch("https://rest.coincap.io/v3/assets?limit=10&offset=0")
+        fetch("https://rest.coincap.io/v3/assets?limit=5&offset=0")
         .then(response => response.json())
         .then((data: DataProp) => {
           const coinsData = data.data;
@@ -110,8 +110,7 @@ export default function Home() {
               <tr className={styles.tr} key={item.id}>
                 <td className={styles.td} data-label="Moeda">
                   <div className={styles.name}>
-                  <img src={`https://assets.coincap.io/assets/icons/${item.symbol.toLowerCase()}@2x.png`} alt="Logo do ativo" className={styles.logo} />
-                    <Link to={`/detail/${item.id}`}>
+                    <Link to={"/detail/bitcoin"}>
                       <span>{item.name}</span> | {item.symbol}
                     </Link>
                   </div>
@@ -129,8 +128,8 @@ export default function Home() {
                   {item.formatedVolume}
                 </td>
 
-                <td className={Number(item.changePercent24Hr) > 0 ? styles.tdProfit : styles.tdLoss} data-label="Variação 24h">
-                  <span>{(Number(item.changePercent24Hr)).toFixed(2) + '%' }</span>
+                <td className={styles.tdProfit} data-label="Variação 24h">
+                  <span>{(item.changePercent24Hr * 100).toFixed(2) }</span>
                 </td>
               </tr>
             ))}
